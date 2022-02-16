@@ -1,17 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>Dice Poker</h1>
+    <Dice @wasClicked="rollDice()" :number="diceNumber" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Dice from "./components/Dice.vue"
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Dice
+  },
+  data() {
+    return {
+      diceNumber: 1
+    }
+  },
+  methods: {
+    rollDice() {
+      this.diceNumber = Math.ceil(Math.random()*6)
+      console.log(this.diceNumber)
+    }
   }
 }
+
 </script>
 
 <style>
